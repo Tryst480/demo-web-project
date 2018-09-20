@@ -56,14 +56,6 @@ public class WebController {
 		return "OK-CS480-Demo";
 	}
 	
-	@RequestMapping(value = "/alex", method = RequestMethod.GET)
-	String alex() {
-		// You can replace this with other string,
-		// and run the application locally to check your changes
-		// with the URL: http://localhost:8080/
-		return "My name is Alex, have a nice day.";
-	}
-	
 	/**
 	 * This is a simple example of how to use a data manager
 	 * to retrieve the data and return it as an HTTP response.
@@ -109,6 +101,22 @@ public class WebController {
 		user.setName(name);
 		userManager.updateUser(user);
 		return user;
+	}
+
+	@RequestMapping(value = "/alex", method = RequestMethod.GET)
+	String alex() {
+		// You can replace this with other string,
+		// and run the application locally to check your changes
+		// with the URL: http://localhost:8080/
+		return "My name is Alex, have a nice day.";
+	}
+
+	@RequestMapping(value = "/ned", method = RequestMethod.GET)
+	String ned() {
+		// You can replace this with other string,
+		// and run the application locally to check your changes
+		// with the URL: http://localhost:8080/
+		return "Hey, it's ya boi, Ned. Make sure you like and subscribe down below.";
 	}
 
 	@RequestMapping(value = "/Tryst/Ted", method = RequestMethod.GET)
