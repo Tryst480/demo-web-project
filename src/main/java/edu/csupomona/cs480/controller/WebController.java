@@ -103,6 +103,14 @@ public class WebController {
 		return user;
 	}
 
+	@RequestMapping(value = "/Tryst/Ted", method = RequestMethod.GET)
+	String dog() {
+		// You can replace this with other string,
+		// and run the application locally to check your changes
+		// with the URL: http://localhost:8080/
+		return "working";
+	}
+	
 	/**
 	 * This API deletes the user. It uses HTTP DELETE method.
 	 *
