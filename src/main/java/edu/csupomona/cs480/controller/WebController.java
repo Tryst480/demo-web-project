@@ -127,6 +127,14 @@ public class WebController {
 		return "Did you know there are more cells in your brain than there are brains in your body?";
 	}
 	
+	@RequestMapping(value = "/Peter", method = RequestMethod.GET)
+	String peter() {
+		// You can replace this with other string,
+		// and run the application locally to check your changes
+		// with the URL: http://localhost:8080/
+		return "The new logo is a waste of money, should have used it for pretty much anything else...";
+	}
+	
 	@RequestMapping(value = "/Tryst/Ted", method = RequestMethod.GET)
 	String dog() {
 		// You can replace this with other string,
