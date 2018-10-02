@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,9 +14,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.csupomona.cs480.App;
 import edu.csupomona.cs480.data.GpsProduct;
+import edu.csupomona.cs480.data.StringCompareRequest;
 import edu.csupomona.cs480.data.User;
 import edu.csupomona.cs480.data.provider.GpsProductManager;
 import edu.csupomona.cs480.data.provider.UserManager;
+import info.debatty.java.stringsimilarity.Levenshtein;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -120,6 +123,12 @@ public class WebController {
 		// and run the application locally to check your changes
 		// with the URL: http://localhost:8080/
 		return "My name is Alex, have a nice day.";
+	}
+	
+	@RequestMapping(value = "/compstr", method = RequestMethod.POST)
+	String compareStr(@RequestBody StringCompareRequest input) {
+		Levenshtein l = new Levenshtein();
+		return Double.toString(l.distance(input.str1, input.str2));
 	}
 
 	@RequestMapping(value = "/ned", method = RequestMethod.GET)
