@@ -155,11 +155,6 @@ public class WebController {
         return "Did you know there are more cells in your brain than there are brains in your body?";
     }
     
-    @RequestMapping(value = "/justin/runtime", method = RequestMethod.GET)
-    Class<? extends String> testCore(String test) { 
-        return test.getClass();
-    }
-    
     @RequestMapping(value = "/Peter", method = RequestMethod.GET)
     String peter() {
         // You can replace this with other string,
