@@ -1,5 +1,6 @@
 package edu.csupomona.cs480.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,13 @@ import edu.csupomona.cs480.data.GpsProduct;
 import edu.csupomona.cs480.data.User;
 import edu.csupomona.cs480.data.provider.GpsProductManager;
 import edu.csupomona.cs480.data.provider.UserManager;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
 
 
 /**
@@ -48,6 +56,9 @@ public class WebController {
 	 * in your web browser, type the link:
 	 * 	http://localhost:8080/cs480/ping
 	 */
+	
+	
+	
 	@RequestMapping(value = "/cs580/ping", method = RequestMethod.GET)
 	String healthCheck() {
 		// You can replace this with other string,
@@ -179,6 +190,25 @@ public class WebController {
 		ModelAndView modelAndView = new ModelAndView("home");
 		modelAndView.addObject("users", listAllUsers());
 		return modelAndView;
+	}
+	
+	
+	@RequestMapping(value = "/cs480/html", method = RequestMethod.GET)
+	public void getFormParams(String html){
+		  
+		Document doc = Jsoup.parse(html);
+	 
+		//HTML form id
+		Element loginform = doc.getElementById("your_form_id");
+
+		Elements inputElements = loginform.getElementsByTag("input");
+
+		List<String> paramList = new ArrayList<String>();
+		for (Element inputElement : inputElements) {
+			String key = inputElement.attr("name");
+			String value = inputElement.attr("value");
+		}
+	 
 	}
 
 }
