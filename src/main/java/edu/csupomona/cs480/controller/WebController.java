@@ -25,6 +25,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.google.common.base.Splitter;
+
 import java.io.IOException;
 
 
@@ -219,5 +221,14 @@ public class WebController {
 		}
 	 
 	}
+
+	@RequestMapping(value = "peter/a4", method = RequestMethod.GET)
+	public String testSplitter(String html){
+		System.out.println(Splitter.on(',')
+				.trimResults()
+				.omitEmptyStrings()
+				.split(html));
+	}
+
 
 }
